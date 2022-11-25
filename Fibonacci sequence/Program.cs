@@ -3,28 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Fibonacci_sequence
 {
     class Program
     {
-        static List<ulong> fibonacciSequence = new List<ulong>();
+        static List<decimal> fibonacciSequence = new List<decimal>();
+        static Stopwatch stopwatch = new Stopwatch();
 
         static void Main(string[] args)
         {
-            fibonacci(92); // 92 maximum
+            stopwatch.Start();
+            fibonacci(138); // 138 maximum
+            stopwatch.Stop();
 
-            foreach (ulong number in fibonacciSequence)
+            foreach (decimal number in fibonacciSequence)
             {
                 Console.WriteLine(number);
             }
-            Console.WriteLine(fibonacciSequence.Count);
+
+            Console.WriteLine($"Took {stopwatch.Elapsed} to run");
             Console.ReadLine();
         }
 
-        static ulong fibonacci(int index)
+        static decimal fibonacci(int index)
         {
-            ulong result;
+            decimal result;
 
             if (index < fibonacciSequence.Count)
             {
@@ -33,7 +38,7 @@ namespace Fibonacci_sequence
 
             else if (index <= 1)
             {
-                result = (ulong)index;
+                result = index;
             }
 
             else
